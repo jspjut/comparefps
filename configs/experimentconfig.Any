@@ -18,7 +18,7 @@
 
     feedbackDuration = 0.0; // Time allocated for providing user feedback
     pretrialDuration = 0.0; // Time allocated for preparing for trial
-    maxTrialDuration = 4.0; // Maximum duration allowed for completion of the task
+    maxTrialDuration = 3.2; // Maximum duration allowed for completion of the task
     referenceTargetSize = 0.03;
 
     // feedback settings
