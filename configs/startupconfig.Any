@@ -1,0 +1,23 @@
+{ 
+    audioEnable = true;         // Set to true for release
+    developerMode = false;       // Set to false for release
+    fullscreen = true;         // Set to true for release
+    waypointEditorMode = false; // Set to false for release
+
+    experimentConfigFilename = "experimentconfig.Any"; 
+    userConfigFilename = "userconfig.Any"; 
+    userStatusFilename = "userstatus.Any"; 
+    keymapConfigFilename = "keymap.Any"; 
+    systemConfigFilename = "systemconfig.Any"; 
+    resultsDirPath = "./results/"; 
+    // FPSci v21 and above use the defaultExperiment and ignore the above
+    defaultExperiment = {
+        name = "default";
+        experimentConfigFilename = "experimentconfig.Any"; 
+        userConfigFilename = "userconfig.Any"; 
+        userStatusFilename = "userstatus.Any"; 
+        keymapConfigFilename = "keymap.Any"; 
+        systemConfigFilename = "systemconfig.Any"; 
+        resultsDirPath = "./results/"; 
+    };
+} 

@@ -1,0 +1,177 @@
+// This is a 2 interval forced choice experiment.
+// This uses the task-level specification available in FPSci versions starting in early 2023.
+// 
+// Specifically we're testing the difference between different refresh rates by having the user
+// answer a question about which one they thought was better. Forcing the choice, we'd expect
+// 50% correct (a coin flip) if they cannot tell, and at least 75% correct if they can tell the 
+// difference most of the time.
+{
+    // global settings
+    showMenuBetweenSessions = False;
+    clearMissDecalsWithReference = True;
+    showReferenceTargetMissDecals = False;
+    description = "CompareFPS2IFC";
+
+    scene = {
+        name = "FPSci Simple Hallway";
+    };
+
+    feedbackDuration = 0.0; // Time allocated for providing user feedback
+    pretrialDuration = 0.0; // Time allocated for preparing for trial
+    maxTrialDuration = 4.0; // Maximum duration allowed for completion of the task
+    referenceTargetSize = 0.03;
+
+    // feedback settings
+    trialFeedbackDuration = 0.0;
+    referenceTargetInitialFeedback = "Click to clear the reference target (red) and then eliminate test targets for fun while trying to tell which of the 2 conditions feels like it has a higher frame rate.";
+    sessionFeedbackDuration = 0.2;
+    sessionCompleteFeedback = "Session complete! Moving to next session.";
+    allSessionsCompleteFeedback = "All Sessions Complete! Thank you for participating in this experiment.";
+    
+    // weapon settings
+    weapon = {
+        id = "5Hz";
+        firePeriod = 0.2;
+        autoFire = False;
+        damagePerSecond = 5.1;
+        maxAmmo = 3600;
+    };
+
+    // UI settings
+    showHUD = True;
+    renderWeaponStatus = True;
+    cooldownMode = "ring";
+    cooldownInnerRadius = 40.0;
+    cooldownColor = Color4(1.0,1.0,1.0,0.8);
+
+    // session settings
+    sessions = (
+        { 
+            id = "fpscompare"; 
+            description = "compare fps"; 
+            tasks = [
+                {
+                    id = "144v160";
+                    // Note that specifying multiple orderings for the stimulus is simple to express here
+                    trialOrders = [
+                        { order = ["144", "160"]; correctAnswer = "Second"; },
+                        { order = ["160", "144"]; correctAnswer = "First"; },
+                    ];
+                    questions = [ {
+                        type = "MultipleChoice";
+                        prompt = "Which of the last two aiming sessions felt like it had a higher frame rate?";
+                        randomOrder = false;
+                        options = ["First", "Second"];
+                        optionKeys = ["1", "2"];
+                        fullscreen = true;
+                        showCursor = false;
+                        fontSize = 40;
+                    } ];
+                    count = 4;
+                },
+                {
+                    id = "144v180";
+                    // Note that specifying multiple orderings for the stimulus is simple to express here
+                    trialOrders = [
+                        { order = ["144", "180"]; correctAnswer = "Second"; },
+                        { order = ["180", "144"]; correctAnswer = "First"; },
+                    ];
+                    questions = [ {
+                        type = "MultipleChoice";
+                        prompt = "Which of the last two aiming sessions felt like it had a higher frame rate?";
+                        randomOrder = false;
+                        options = ["First", "Second"];
+                        optionKeys = ["1", "2"];
+                        fullscreen = true;
+                        showCursor = false;
+                        fontSize = 40;
+                    } ];
+                    count = 4;
+                },
+                {
+                    id = "144v200";
+                    // Note that specifying multiple orderings for the stimulus is simple to express here
+                    trialOrders = [
+                        { order = ["144", "200"]; correctAnswer = "Second"; },
+                        { order = ["200", "144"]; correctAnswer = "First"; },
+                    ];
+                    questions = [ {
+                        type = "MultipleChoice";
+                        prompt = "Which of the last two aiming sessions felt like it had a higher frame rate?";
+                        randomOrder = false;
+                        options = ["First", "Second"];
+                        optionKeys = ["1", "2"];
+                        fullscreen = true;
+                        showCursor = false;
+                        fontSize = 40;
+                    } ];
+                    count = 4;
+                },
+                {
+                    id = "144v240";
+                    // Note that specifying multiple orderings for the stimulus is simple to express here
+                    trialOrders = [
+                        { order = ["144", "240"]; correctAnswer = "Second"; },
+                        { order = ["240", "144"]; correctAnswer = "First"; },
+                    ];
+                    questions = [ {
+                        type = "MultipleChoice";
+                        prompt = "Which of the last two aiming sessions felt like it had a higher frame rate?";
+                        randomOrder = false;
+                        options = ["First", "Second"];
+                        optionKeys = ["1", "2"];
+                        fullscreen = true;
+                        showCursor = false;
+                        fontSize = 40;
+                    } ];
+                    count = 4;
+                },
+            ];
+            trials = ( 
+                { 
+                    id = "144";
+                    frameRate = 144;
+                    targetIds = ( "stray_fly_hard", "stray_fly_hard", "stray_fly_hard", "stray_fly_hard"); 
+                }, 
+                { 
+                    id = "160";
+                    frameRate = 160;
+                    targetIds = ( "stray_fly_hard", "stray_fly_hard", "stray_fly_hard", "stray_fly_hard"); 
+                }, 
+                { 
+                    id = "180";
+                    frameRate = 180;
+                    targetIds = ( "stray_fly_hard", "stray_fly_hard", "stray_fly_hard", "stray_fly_hard"); 
+                }, 
+                { 
+                    id = "200";
+                    frameRate = 200;
+                    targetIds = ( "stray_fly_hard", "stray_fly_hard", "stray_fly_hard", "stray_fly_hard"); 
+                }, 
+                { 
+                    id = "240";
+                    frameRate = 240;
+                    targetIds = ( "stray_fly_hard", "stray_fly_hard", "stray_fly_hard", "stray_fly_hard"); 
+                }, 
+            ); 
+            
+        }, 
+    );
+
+    // target settings
+    targets = (
+        {
+            id = "stray_fly_hard";
+            destSpace = "player";
+            elevationLocked = False;
+            speed = ( 8, 15 );
+            visualSize = ( 0.03, 0.03 );
+            eccH = ( 5.0, 15.0 );
+            eccV = ( 0.0, 1.0 );
+            motionChangePeriod = ( 0.5, 0.6 );
+            jumpEnabled = False;
+            respawnCount = -1;
+        },
+    );
+
+}

@@ -1,0 +1,14 @@
+// File generated on 02/22/2022 at 13:46:20
+{ 
+    currentUser = "anon"; 
+    sessions = ( "fpscompare" ); 
+    settingsVersion = 1; 
+    allowRepeat = True;
+    users = ( 
+        { 
+            completedSessions = ( ); 
+            id = "anon"; 
+            sessions = ("fpscompare");
+        } 
+    ); 
+}  
